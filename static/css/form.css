@@ -1,0 +1,26 @@
+body {
+    background-color: black;
+}
+
+
+h3 {
+    background-color: blue;
+    width: 100%;
+    
+  
+}
+#input {
+    border-radius: 10px 0px 0px 10px;
+}
+form {
+    /* This bit sets up the horizontal layout */
+    display:flex;
+    flex-direction:row;
+  }
+  button {
+    /* Just a little styling to make it pretty */
+    border:1px solid blue;
+    background:blue;
+    color:white;
+    border-radius: 0px 10px 10px 0px;
+  }

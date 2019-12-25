@@ -1,0 +1,84 @@
+{% load static %}
+ <!-- Navbar -->
+     <!--top nav-bar  -->
+<nav class="nav-first">
+    <ul>
+        <li
+        {% if 'trending' in request.path %}
+            class="active"
+          {% else %}   
+             class="nav-item mr-3"
+          {% endif %}
+        ><a href="{% url 'trending' %}"><i class="fas fa-home li-first"></i></a></li
+            >
+        <li
+        {% if 'search' in request.path %}
+            class="active"
+          {% else %}   
+             class="nav-item mr-3"
+          {% endif %}
+        ><a href="{% url 'search' %}"><i class="fas fa-search li-first"></i></a></li
+            >
+        <li
+        {% if 'tending' in request.path %}
+            class="active"
+          {% else %}   
+             class="nav-item mr-3"
+          {% endif %}
+        ><a href="{% url 'trending' %}" id="poster">movieposter</a></li
+            >
+        <li
+        {% if 'movielist' in request.path %}
+             class="nav-item active mr-3"
+          {% else %}   
+             class="nav-item mr-3"
+          {% endif %}
+        ><a href="{% url 'movielist' %}"><i class="fas fa-list li-first"></i></a></li
+            >
+        <li
+        {% if 'account' in request.path %}
+            class="active"
+          {% else %}   
+             class="nav-item mr-3"
+          {% endif %}
+        ><a href="{% url 'account' %}"><i class="fas fa-user-circle li-first"></i></a></li
+            >
+    </ul>
+</nav>    
+<!-- bottom nav-bar -->
+<nav class="nav-bottom">
+    <ul>
+        <li
+        {% if 'trending' in request.path %}
+            class="active"
+          {% else %}   
+             class="nav-item mr-3"
+          {% endif %}
+        ><a href="{% url 'trending' %}" ><i class="fas fa-home li-bottom"></i></a></li
+            >
+        <li
+        {% if 'search' in request.path %}
+            class="active"
+          {% else %}   
+             class="nav-item mr-3"
+          {% endif %}
+        ><a href="{% url 'search' %}"><i class="fas fa-search li-bottom"></i></a></li
+            >
+        <li
+        {% if 'movielist' in request.path %}
+            class="active"
+          {% else %}   
+             class="nav-item mr-3"
+          {% endif %}
+        ><a href="{% url 'movielist' %}"><i class="fas fa-list li-bottom"></i></a></li
+            >
+        <li
+        {% if 'account' in request.path %}
+            class="active"
+          {% else %}   
+             class="nav-item mr-3"
+          {% endif %}
+        ><a href="{% url 'account' %}"><i class="fas fa-user-circle li-bottom"></i></a></li
+            >
+    </ul>
+</nav>  

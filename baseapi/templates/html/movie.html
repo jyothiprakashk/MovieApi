@@ -1,29 +1,56 @@
 {% extends "html/index.html" %}
 {% block content %}
 
-<h5>Recomended Movies</h5>
-<div class="container">
-<div class="album py-2 bg-black">
-<div class="container">
-    <div class="row">
-    {% for movies in movie_list %}
-    <div class="col-md-4">
-        <div class="card mb-4 shadow-sm">
-        <img class="bd-placeholder-img card-img-top"  width="90%" height="225" src="https://image.tmdb.org/t/p/w500/{{ movies.poster }}" alt="NO"></img>
-
-        <div class="card-body">
-            <p class="card-text">{{ movies.title }}</p>
-            <div class="d-flex justify-content-between align-items-center">
-            <div class="btn-group">
-                <a type="button" href='{{ movies.overview }}'class="btn btn-sm btn-outline-secondary">View</a>
+<h5>Trending movies of the week</h5>
+<div class="album py-4 bg-black">
+  <div class="wrap" class="container-fluid">
+    <div class="grid">
+      {% for movies in movie_list %}
+      <form action="" method="POST">
+        {% csrf_token %}
+        <div>
+          <div for="poster" class="card h-100 shadow-sm d-flex flex-row">
+            {% if movies.poster %}
+            <div>
+              <a href="/cast/{{ movies.id }}">
+                <img class="bd-placeholder-img card-img-top w-100 h-100" style="max-width: 250px; object-fit: cover"
+                  src="https://image.tmdb.org/t/p/w500/{{ movies.poster }}" alt="NO"></img>
+                <input for="poster" name="poster" id="poster" type="hidden" class="card-text"
+                  value="{{ movies.poster }}">
+              </a>
             </div>
-            <small class="text-muted">{{ movies.release }}</small>
+            {% else %}
+            <img class="bd-placeholder-img card-img-top w-100 h-100" style="max-width: 250px; object-fit: cover"
+              src="https://via.placeholder.com/150/000000/FFFFFF/?text=NO Image" alt="NO"></img>
+            <input for="poster" name="poster" id="poster" type="hidden" class="card-text" value="{{ movies.poster }}">
+            {% endif %}
+            <div class="card-body">
+              <a href="/cast/{{ movies.id }}">
+                <p for="title" class="card-text">{{ movies.title|slice:":140" }}</p>
+                <input for="title" name="title" id="title" type="hidden" class="card-text" value="{{ movies.title }}">
+              </a>
+              <div class="d-flex justify-content-between align-items-center">
+                <p for="overview" class="card" id="overview">{{ movies.overview }}....</p>
+                <input for="overview" class="card" name="overview" id="overview" type="hidden" class="card-text"
+                  value="{{ movies.overview }}">
+              </div>
+              <div class="rating_search">
+                <span class="fa fa-star checked"></span><br>
+                <div class="vote_average">{{ movies.vote_average }}</div>
+                <input for="vote_average" id="date" name="vote_average" type="hidden" class="text-muted ml-auto"
+                  value="{{ movies.vote_average }}">
+                <small for="release" id="date" style="color: white; "
+                  class="text-muted ml-auto">{{ movies.release }}</small>
+                <input for="release" id="date" name="release" type="hidden" class="text-muted ml-auto"
+                  value="{{ movies.release }}">
+              </div>
+              <div class="line"></div>
+              <button class="taskAdd" name="taskAdd" type="submit"><i class="far fa-heart"></i></button>
             </div>
+          </div>
+          </form>
         </div>
-        </div>
+        {% endfor %}
     </div>
-    {% endfor %}
-    </div>
-</div>
-</div> 
-{% endblock content %}
+  </div>
+  {% endblock content %}

@@ -1,0 +1,14 @@
+{% extends "html/index.html" %}
+{% block content %}
+<div class="login-page">
+    <form class="login-form" action="log" method="POST">
+        {% csrf_token %}
+        <input type="text" name="username" placeholder="I'm chitti">
+        <input type="password" name="password" placeholder="password">
+        <button type="submit" class="login-button">Login</button>
+        <p class="message">Not Registerd?<a href="signup">Register</a></p>
+    </form>
+</div>
+{% endblock content %}
+
+

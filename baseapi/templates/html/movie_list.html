@@ -1,0 +1,35 @@
+{% extends "html/index.html" %}
+{% block content %}
+<div class="movie">movies list</div>
+
+<div class="container-fluid-1">
+    {% for movies in movie %}
+    <div class="movie-list">
+        <a href="/cast/{{ movies.id }}">
+        <img class="bd-placeholder-img card-img-top w-70 h-100" style="max-width: 100px; object-fit: cover"
+            src="https://image.tmdb.org/t/p/w500/{{ movies.poster }}" alt="NO"></img></a>
+        <div class="movie-data">
+            <a href="/cast/{{ movies.id }}">
+            <div class="movie-list-title">{{ movies.title }}</div></a>
+            <div class="movie-data-2">
+                <div class="avg_star">
+                    <span class="fa fa-star checked"></span>
+                    <div class="movie-list-vote">{{ movies.vote_average }}</div>
+                </div>
+                <div class="calender">
+                    <i class="fas fa-calendar movie_list_calender"></i>
+                    <div class="movie-list-date">{{ movies.release}}</div>
+                </div>
+                <form action="/delete/{{ movies.id }}/"  method="POST">
+                    {% csrf_token %}
+                    <button class="primary delete-button" id="delete"><i class="fas fa-trash-alt"></i></button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+
+{% endblock content %}

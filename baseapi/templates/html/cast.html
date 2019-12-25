@@ -1,0 +1,95 @@
+{% extends "html/index.html" %}
+{% block content %}
+<div>
+    <iframe class="video" src="https://www.youtube.com/embed/{{ video }}" frameborder="0"
+        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+<div class="heads">
+    <h3 class="title">{{ original_title }}</h3>
+    <div class="tagline">{{ tagline }}</div>
+    <div class="genere-list">
+        {% for genere in genere_list %}
+
+            <div class="genere">
+                    {{ genere.name }}
+            </div>
+        {% endfor %}
+        <div class="cast-calender">
+            <i class="fas fa-calendar"></i>
+            <div class="cast-date">{{ release }}</div>
+         </div>
+    </div>
+</div>
+<div class="rating"><i class="fas fa-heartbeat"></i>
+    <div class="cast-rating-avg"> {{ vote_average }}</div>
+
+</div>
+<h3>SYNOPSIS</h3>
+<div class="overview">{{ overview }}</div>
+<h3 id="cast">Cast</h3>
+<div class="container-fluid">
+    {% for movies in movie_list %}
+    <div class="image-name">
+        <div class="wrapper">
+            {% if movies.profile_path %}
+            <img class="grid-img" style="max-width:120px; object-fit:cover"
+                src="https://image.tmdb.org/t/p/w500/{{ movies.profile_path }}" alt="NO"></img>
+            {% else %}
+            <img class="grid -img" style="max-width: 120px; object-fit: cover"
+                src="https://via.placeholder.com/150/000000/FFFFFF/?text={{ movies.character }}" alt="NO"></img>
+            {% endif %}
+            <div class="character">{{ movies.character|slice:":16" }}</div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+
+<h3>Crew</h3>
+<div class="container-fluid">
+    {% for movies in crew_list %}
+    <div class="image-name">
+        <div class="wrapper">
+            {% if movies.profile %}
+            <img class="grid-img" style="max-width:120px; object-fit:cover"
+                src="https://image.tmdb.org/t/p/w500/{{ movies.profile }}" alt="NO"></img>
+            {% else %}
+            <img class="grid -img" style="max-width: 120px; object-fit: cover"
+                src="https://via.placeholder.com/150/000000/FFFFFF/?text={{ movies.name }}" alt="NO"></img>
+            {% endif %}
+            <div class="wrapper-2">
+                <div class="character">{{ movies.name|slice:":16" }}</div>
+                <div class="job">{{ movies.job }}</div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<h3>Similar Movies</h3>
+<div class="container-fluid">
+
+    {% for movies in similar_list %}
+    <div class="image-name">
+        <div class="wrapper">
+            {% if movies.poster %}
+            <a href="/cast/{{ movies.id }}">
+                <img class="grid-img" style="max-width:120px; object-fit:cover"
+                    src="https://image.tmdb.org/t/p/w500/{{ movies.poster }}" alt="NO"></img>
+            </a>
+            {% else %}
+            <img class="grid -img" style="max-width: 120px; object-fit: cover"
+                src="https://via.placeholder.com/150/000000/FFFFFF/?text={{ movies.title }}" alt="NO"></img>
+            {% endif %}
+            <a href="/cast/{{ movies.id }}">
+                <div class="character">{{ movies.title|slice:":16" }}</div>
+            </a>
+            <div class="rating_icon">
+                <span class="fa fa-star checked"></span><br>
+                <div class="vote_average">{{ movies.vote_average }}</div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock content %}

@@ -1,0 +1,42 @@
+{% extends "html/index.html" %}
+{% block content %}
+
+<div class="contact">
+    <div class="username">Hello,{{ user.first_name }}</div>
+    <div class="Gmail">{{ user.email }}</div>
+    <ul class="navbar-nav">
+        {% if user.is_authenticated %}
+        <li class="nav-item-account mr-3" class="logout-button">
+            <a href="javascript:{document.getElementById('logout').submit()}" class="nav-link">
+            <i class="fas fa-sign-out-alt"></i>Logout
+            </a>
+            <form action="{% url 'logouts' %}" method="POST" id="logout">
+                {% csrf_token %}
+                <input type="hidden">
+            </form>
+        
+        </li>
+        {% else %}
+        <li class="signup-login">
+              <a class="nav-link-signup" href="{% url 'signup' %}">
+                <i class="fas fa-user-plus"></i> Register</a>
+       
+              <a class="nav-link-login" href="{% url 'log' %}">
+                <i class="fas fa-sign-in-alt"></i> Login</a>
+        </li>
+
+        {% endif %}
+    </ul>
+    <!-- <div class="signout">signout</div> -->
+    <div class="social-media">
+        <div class="linkdin"><a href="https://www.linkedin.com/in/jyothiprakashk/"><i class="fab fa-linkedin"></i></a></div>
+        <div class="twitter"><a href="https://twitter.com/Jyothiprakash97"><i class="fab fa-twitter"></i></a></div>
+        <div class="github"><a href="https://github.com/jyothiprakashk"><i class="fab fa-github-square"></i></a></div>
+    </div>
+    <div class="self">Under Development</div>
+    <div class="coded">Coded By Jyothi Prakash</div>
+</div>
+
+
+
+{% endblock content %}

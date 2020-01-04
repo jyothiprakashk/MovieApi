@@ -1,14 +1,14 @@
 from django.db import models
 # from django.contrib.auth.models import User
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import User
 
-class User(AbstractUser):
-    username = models.CharField(max_length=100,unique=True)
-    password = models.CharField(max_length=50)
-    email       = models.EmailField(verbose_name='email address', unique=True, max_length=244)
-    first_name  = models.CharField(max_length=30, null=True, blank=True)
-    def get_username(self):
-        return self.email
+# class User(AbstractUser):
+#     username = models.CharField(max_length=100,unique=True)
+#     password = models.CharField(max_length=50)
+#     email       = models.EmailField(verbose_name='email address', unique=True, max_length=244)
+#     first_name  = models.CharField(max_length=30, null=True, blank=True)
+#     def get_username(self):
+#         return self.email
     
     
 class Movie(models.Model):

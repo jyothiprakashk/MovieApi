@@ -209,10 +209,10 @@ def signup(request):
         first_name=request.POST['first_name']
         # last_name=request.POST['last_name']
         username=request.POST['username']
-        password1=request.POST['password1']
+        password=request.POST['password1']
         #password2=request.POST['password2']
         email=request.POST['email']
-        user=User.objects.create_user(username=username,password=password1,email=email,first_name=first_name)
+        user=User.objects.create_user(username=username,password=password,email=email,first_name=first_name)
         user.save()
         print('user created')
         return redirect("/log")

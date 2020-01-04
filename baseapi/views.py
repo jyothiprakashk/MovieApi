@@ -208,15 +208,15 @@ def signup(request):
   if request.method=='POST':
    #Get form values
    first_name = request.POST['first_name']
-   last_name = request.POST['last_name']
+   #last_name = request.POST['last_name']
    username = request.POST['username']
    email = request.POST['email']
    password = request.POST['password1']
-   password2= request.POST['password2']
+   #password2= request.POST['password2']
 
    # check if passwords match
 
-   if password == password2:
+   if password == password:
      # check username
         if User.objects.filter(username=username).exists():
             messages.error(request,'that username is taken')
@@ -227,7 +227,7 @@ def signup(request):
                return redirect('signup') 
             else:
               user = User.objects.create_user(username=username,password=password,email=email,
-              first_name=first_name,last_name=last_name) 
+              first_name=first_name) 
               #Login
               #auth.login(request,user)
               #messages.success(request,'you are logged in')

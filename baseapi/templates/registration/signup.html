@@ -6,11 +6,11 @@
             <form class="register-form" action="signup" method="post">
                     {% csrf_token %}
                 <input type="text" name="first_name" placeholder="first_name">
-                <input type="password" name="last_name" placeholder="last_name">
+                <!-- <input type="password" name="last_name" placeholder="last_name"> -->
                 <input type="text" name="username" placeholder="username">
                 <input type="email" name="email" placeholder="email id">
                 <input type="password" name="password1" placeholder="password1"><br>
-                <input type="password" name="password2" placeholder="password2"><br>
+                <!-- <input type="password" name="password2" placeholder="password2"><br> -->
                 <button type="submit">Create</button>
                 <p class="message">Already Registerd? <a href="{% url 'log' %}">Login</a></p>
             </form>

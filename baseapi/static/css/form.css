@@ -262,13 +262,7 @@ a:hover {
 .nav-bottom {
     display: none;
 }
-.error {
-    display: flex;
-    flex-direction: column;
-    margin-top: 200px;
-    align-items: center;
 
-}
 h2 {
     color: white;
     display: contents;
@@ -420,7 +414,7 @@ h3 {
   
 }
 .login-form {
-    background-color: blue;
+    background-color: darkcyan;
     position: relative;
     max-width: 360px;
     margin: 0 auto 100px;
@@ -443,7 +437,8 @@ h3 {
     margin-left: 5px;
     border-radius: 10px;
     font-size: 24px;
-    color: crimson;
+    color: white;
+    background-color: green;
 }
 .sign-up{
    
@@ -493,9 +488,21 @@ h3 {
     margin: 15px 0 0;
 
 }
+
+.login-form .message{
+    color: aliceblue;
+    font-size: 15px;
+    margin: 15px 0 0;
+}
+.login-form .message a {
+    color: white;
+}
 .sign-up .message a{
- color: violet;
+ color: yellow;
  text-decoration: none;
+}
+.login-form .message a {
+    color: yellow;
 }
 .sign-up .register-form{
     display: none;
@@ -572,10 +579,74 @@ h3 {
     /* #color: white; */
     opacity: 1 !important;
 }
-/* .nav {
-    opacity: 0.9 !important;
-    text-transform: uppercase;
-} */
+/* signupa nd login */
+.signup-login-poster {
+    width: 100%;
+    background-color: palevioletred;
+    color: white;
+    font-size: 30px;
+    overflow: hidden;
+    height: 50px;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 999;
+    display: flex;
+    flex-direction: row;
+}
+.signup-login-poster ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-around;
+    margin-left: auto;
+    font-size: 25px;
+    padding: 10px
+    
+}
+.signup-login-poster ul li a {
+    text-decoration: none;
+    /* padding: 10px; */
+    display: flex;
+    flex-direction: row;
+    color: white;
+    display: block;
+    font-weight: 700;
+    opacity: 0.5;
+    margin-right: 10px;
+}
+.fa-user-plus {
+    margin-left: auto;
+}
+/* error page css */
+
+.error {
+    display: flex;
+    flex-direction: column;
+    margin-top: 150px;
+    align-items: center;
+
+}
+.logo {
+    vertical-align: middle;
+    border-style: none;
+    height: 200px;
+    width: 200px;
+    border-radius: 10px;
+}
+.no-internet-message {
+    margin-top: 10px;
+    color: white;
+    font-size: 22px;
+}
+.try-again {
+    color: red;
+    font-size: 20px;
+    font-family: cursive;
+    margin-top: 8px;
+    text-decoration: none;
+
+}
+
 @media (max-width: 900px) {
     .nav-first {
         display: none;

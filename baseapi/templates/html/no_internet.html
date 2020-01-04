@@ -1,12 +1,14 @@
 {% extends "html/index.html" %}
+
 {% load static %}
 
 {% block content %}
+{% include 'html/navbar.html' %}
 <div class="error">
-    <a class="logo">
-        <img src="{% static 'images/404-error.png' %}" class="logo" alt="" width=70px;>
+    <a class="no-internet-logo">
+        <img src="{% static 'images/404-error.png' %}" class="logo" alt="">
     </a>
-    <h2>No Internet</h2>
-    <h4>Please,check the Internet</h4>
+    <div class="no-internet-message">Could not connect to the Internet.Please check your Internet</div>
+    <a href="{% url 'trending' %}"><div class="try-again">Try again</div></a>
 </div>
 {% endblock content %}

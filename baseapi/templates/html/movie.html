@@ -1,14 +1,16 @@
 {% extends "html/index.html" %}
+
 {% block content %}
+{% include 'html/navbar.html' %}
 
 <h5>Trending movies of the week</h5>
 <div class="album py-4 bg-black">
   <div class="wrap" class="container-fluid">
     <div class="grid">
       {% for movies in movie_list %}
-      <form action="" method="POST">
+      <form action="" method="POST" class="h-100">
         {% csrf_token %}
-        <div>
+        <div class="h-100">
           <div for="poster" class="card h-100 shadow-sm d-flex flex-row">
             {% if movies.poster %}
             <div>
@@ -43,6 +45,9 @@
                   class="text-muted ml-auto">{{ movies.release }}</small>
                 <input for="release" id="date" name="release" type="hidden" class="text-muted ml-auto"
                   value="{{ movies.release }}">
+                <div style="display: none;">{{ movies.id }}</div>
+                <input for="release" id="date" name="movie_id" type="hidden" class="text-muted ml-auto"
+                    value="{{ movies.id }}">
               </div>
               <div class="line"></div>
               <button class="taskAdd" name="taskAdd" type="submit"><i class="far fa-heart"></i></button>

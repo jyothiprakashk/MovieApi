@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/2.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
 """
-
+import django_heroku
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'baseapi',
     'django.contrib.humanize',
 ]
-
+LOGIN_URL = 'log'
+LOGIN_REDIRECT_URL = 'signup'
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -52,6 +53,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    
 ]
 
 ROOT_URLCONF = 'movieapi.urls'
@@ -85,7 +87,7 @@ DATABASES = {
     }
 }
 
-
+AUTH_USER_MODEL = 'baseapi.User'
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
 
@@ -126,6 +128,6 @@ STATIC_URL = '/static/'
 
 
 
-
+django_heroku.settings(locals())
 # MOVIE_DATA_API_KEY='e21a9a47'
 MOVIE_DATA_API_KEY='e6f1e03ae70bc830f87e22213e3038a3'

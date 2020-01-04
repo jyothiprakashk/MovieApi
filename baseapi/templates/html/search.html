@@ -1,5 +1,6 @@
 {% extends "html/index.html" %}
 {% block content %}
+{% include 'html/navbar.html' %}
 <div class="search">
     <form method="POST" class="search-form">
         {% csrf_token %}
@@ -13,10 +14,10 @@
     <div class="wrap" class="container-fluid">
         <div class="grid">
             {% for movies in movie %}
-            <form action="" method="POST">
+            <form action="" method="POST" class="h-100">
                 {% csrf_token %}
-                <div>
-                    <div >{{ movies.id }}</div>
+                <div class="h-100">
+                    <!-- <div >{{ movies.id }}</div> -->
                     <div class="card h-100 shadow-sm d-flex flex-row">
                         {% if movies.poster %}
 
@@ -57,6 +58,9 @@
                                 <small for="release" id="date" class="text-muted ml-auto">{{ movies.release }}</small>
                                 <input for="release" id="date" name="release" type="hidden" class="text-muted ml-auto"
                                     value="{{ movies.release }}">
+                                <div style="display: none;">{{ movies.id }}</div>
+                                <input for="release" id="date" name="movie_id" type="hidden" class="text-muted ml-auto"
+                                    value="{{ movies.id }}">
 
                             </div>
                             <div class="line"></div>

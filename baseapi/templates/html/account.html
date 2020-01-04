@@ -1,5 +1,6 @@
 {% extends "html/index.html" %}
 {% block content %}
+{% include 'html/navbar.html' %}
 
 <div class="contact">
     <div class="username">Hello,{{ user.first_name }}</div>
@@ -19,10 +20,10 @@
         {% else %}
         <li class="signup-login">
               <a class="nav-link-signup" href="{% url 'signup' %}">
-                <i class="fas fa-user-plus"></i> Register</a>
+                <i class="fas fa-user-plus account-signup"></i> Register</a>
        
               <a class="nav-link-login" href="{% url 'log' %}">
-                <i class="fas fa-sign-in-alt"></i> Login</a>
+                <i class="fas fa-sign-in-alt account-login"></i> Login</a>
         </li>
 
         {% endif %}

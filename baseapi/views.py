@@ -7,69 +7,71 @@ from . models import Movie
 import urllib
 from .forms import MovieForm
 import traceback
+from django.contrib.auth import get_user_model
 from django.contrib.auth.models import User,auth
 from django.contrib import messages,auth
 from django.contrib.auth.decorators import login_required
-
-# @login_required(login_url="log/")
+User = get_user_model()
+@login_required(redirect_field_name="log")
 def index(request):
     movie=[]
-    try:
-        if request.method=="POST":
-            if "taskAdd" in request.POST:
-                print(list(request.POST.items()))
-                title=request.POST["title"]
-                overview=request.POST["overview"]
-                release=request.POST["release"]
-                poster=request.POST["poster"]
-                vote_average=request.POST["vote_average"]
-                task=Movie(title=title,overview=overview,release=release,poster=poster,vote_average=vote_average)
-                task.save()
-                return redirect('/')
-            search_url="https://api.themoviedb.org/3/search/movie"
-            params = {
-                    'query' : request.POST['search'],
-                    'api_key' : settings.MOVIE_DATA_API_KEY,
+    # try:
+    if request.method=="POST":
+        if "taskAdd" in request.POST:
+            print(list(request.POST.items()))
+            title=request.POST["title"]
+            release=request.POST["release"]
+            poster=request.POST["poster"]
+            vote_average=request.POST["vote_average"]
+            movie_id=request.POST["movie_id"]
+            task=Movie(title=title,release=release,poster=poster,vote_average=vote_average,movie_id=movie_id)
+            task.save()
+            return redirect('/')
+        search_url="https://api.themoviedb.org/3/search/movie"
+        params = {
+                'query' : request.POST['search'],
+                'api_key' : settings.MOVIE_DATA_API_KEY,
+        }
+    
+        r=requests.get(search_url,params=params)
+        s=r.json()['results']
+        for result in s:
+            movies={
+                'id':result['id'],
+                'title':result['title'][:15],
+                'overview':result['overview'][:100],
+                'release':result['release_date'],
+                'poster':result['poster_path'],
+                'vote_average' :result['vote_average'],
             }
+            movie.append(movies)
+    context={
+        'movie':movie
+    } 
+    return render(request,'html/search.html',context)
+    # except Exception as error:
+    #     print(error)
+    #     traceback.print_exc()
         
-            r=requests.get(search_url,params=params)
-            s=r.json()['results']
-            for result in s:
-                movies={
-                    'id':result['id'],
-                    'title':result['title'][:15],
-                    'overview':result['overview'][:100],
-                    'release':result['release_date'],
-                    'poster':result['poster_path'],
-                    'vote_average' :result['vote_average'],
-                }
-                movie.append(movies)
-        context={
-            'movie':movie
-        } 
-        return render(request,'html/search.html',context)
-    except Exception as error:
-        print(error)
-        traceback.print_exc()
-        
-    return render(request,'html/no_internet.html')
+    # return render(request,'html/no_internet.html')
 
 
 def error_404_view(request, exception):
     data = {"name": "ThePythonDjango.com"}
     return render(request,'html/error.html', data) 
-# @login_required(login_url="log/")
+
+@login_required(redirect_field_name="log")
 def trending(request):
     movie_list=[]
     try:
         if request.method=="POST":
             if "taskAdd" in request.POST:
                 title=request.POST["title"]
-                overview=request.POST["overview"]
                 release=request.POST["release"]
                 poster=request.POST["poster"]
                 vote_average=request.POST["vote_average"]
-                task=Movie(title=title,overview=overview,release=release,poster=poster,vote_average=vote_average)
+                movie_id=request.POST["movie_id"]
+                task=Movie(title=title,release=release,poster=poster,vote_average=vote_average,movie_id=movie_id,admin=request.user)
                 task.save()
                 return redirect('/')
         url_recomend='https://api.themoviedb.org/3/trending/movie/day'   
@@ -101,7 +103,7 @@ def trending(request):
 
 
   
-# @login_required(login_url="log/")
+@login_required(redirect_field_name="log")
 def cast(request, id):
     try:
         movie_list=[]
@@ -172,17 +174,15 @@ def cast(request, id):
         print('no internet')
     return render(request,'html/no_internet.html')
 
-# @login_required(login_url="log/")
+@login_required(redirect_field_name="log")
 def movielist(request):
-    print(request)
-    # print(request.id)
-    movie=Movie.objects.all()
+    movie=Movie.objects.filter(admin_id=request.user)
     context = {
     "movie": movie
     }
     return render(request,'html/movie_list.html',context)
 
-# @login_required(login_url="log/")
+@login_required(redirect_field_name="log")
 def delete(request,id):
     if request.method=="POST":
         Movie.objects.filter(id=id).delete()
@@ -218,14 +218,14 @@ def signup(request):
         return redirect("/log")
     else:
         return render(request,'registration/signup.html')
-# @login_required(login_url="log/")   
+@login_required(redirect_field_name="log")   
 def logouts(request):
     if request.method=='POST':
       auth.logout(request)
       messages.success(request,'you are logged out')
     return redirect('/log')
                 
-# @login_required
+@login_required(redirect_field_name="log")
 def account(request):
     
     return render(request,'html/account.html')    

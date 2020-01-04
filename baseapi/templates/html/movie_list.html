@@ -1,15 +1,18 @@
 {% extends "html/index.html" %}
+
 {% block content %}
+{% include 'html/navbar.html' %}
 <div class="movie">movies list</div>
 
 <div class="container-fluid-1">
     {% for movies in movie %}
+    {% if movies %}
     <div class="movie-list">
-        <a href="/cast/{{ movies.id }}">
+        <a href="/cast/{{ movies.movie_id }}">
         <img class="bd-placeholder-img card-img-top w-70 h-100" style="max-width: 100px; object-fit: cover"
             src="https://image.tmdb.org/t/p/w500/{{ movies.poster }}" alt="NO"></img></a>
         <div class="movie-data">
-            <a href="/cast/{{ movies.id }}">
+            <a href="/cast/{{ movies.movie_id }}">
             <div class="movie-list-title">{{ movies.title }}</div></a>
             <div class="movie-data-2">
                 <div class="avg_star">
@@ -28,7 +31,10 @@
 
         </div>
     </div>
+    {% else %}
+    {% endif %}
     {% endfor %}
+
 </div>
 
 

@@ -2,6 +2,7 @@
 {% load static %}
 {% block content %}
 {% include 'registration/signup-login-nav.html' %}
+<div class="signup-botom-header">movieposter</div>
 <a class="no-internet-logo">
     <img src="{% static 'images/error.png' %}" class="login-logo" alt="No Image Found">
 </a>
@@ -15,6 +16,7 @@
         {% include 'html/partial.html' %}
     </form>
 </div>
+{% include 'registration/footer.html' %}
 {% endblock content %}
 
 

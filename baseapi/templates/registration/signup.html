@@ -1,8 +1,10 @@
 {% extends "html/index.html" %}
 {% block content %}
 {% include 'registration/signup-login-nav.html' %}
+
 <form action="" method="post">
         <div class="sign-up">
+            
             <form class="register-form" action="signup" method="post">
                     {% csrf_token %}
                 <input type="text" name="first_name" placeholder="first_name">
@@ -13,6 +15,7 @@
                 <!-- <input type="password" name="password2" placeholder="password2"><br> -->
                 <button type="submit">Create</button>
                 <p class="message">Already Registerd? <a href="{% url 'log' %}">Login</a></p>
+                {% include 'html/partial.html' %}
             </form>
             
         </div>

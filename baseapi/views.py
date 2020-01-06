@@ -196,10 +196,10 @@ def log(request):
 
     if user is not None:
         auth.login(request,user)
-        messages.success(request,'logged in')
+        messages.success(request,'Now you are logged into movie-poster')
         return redirect('/trending')
     else:
-        messages.error(request,'Invalid user') 
+        messages.error(request,'Login failed') 
         return redirect('log')   
 
   else:      
@@ -208,30 +208,22 @@ def signup(request):
   if request.method=='POST':
    #Get form values
    first_name = request.POST['first_name']
-   #last_name = request.POST['last_name']
    username = request.POST['username']
    email = request.POST['email']
    password = request.POST['password1']
-   #password2= request.POST['password2']
-
-   # check if passwords match
 
    if password == password:
      # check username
         if User.objects.filter(username=username).exists():
-            messages.error(request,'that username is taken')
+            messages.error(request,'This  username already taken')
             return redirect('signup')
         else:  
             if User.objects.filter(email=email).exists():
-               messages.error(request,'that email is taken')
+               messages.error(request,'this email already taken')
                return redirect('signup') 
             else:
               user = User.objects.create_user(username=username,password=password,email=email,
               first_name=first_name) 
-              #Login
-              #auth.login(request,user)
-              #messages.success(request,'you are logged in')
-              #return redirect('index')
               user.save()
               messages.success(request,'you are now registerd and login')
               return redirect('log')

@@ -12,6 +12,7 @@
 
     <link href="https://fonts.googleapis.com/css?family=Rajdhani|Yanone+Kaffeesatz&display=swap"
         rel="stylesheet">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/cyborg/bootstrap.min.css"
         integrity="sha384-mtS696VnV9qeIoC8w/PrPoRzJ5gwydRVn0oQ9b+RJOPxE1Z1jXuuJcyeNxvNZhdx" crossorigin="anonymous">
     <link rel="stylesheet" type='text/css' href="{% static '/css/form.css' %}">
@@ -20,10 +21,13 @@
     </head>
 
     <body>
+        <div class="signup-botom-header">movieposter</div>
         
         {% block content %}
 
         {% endblock content %}
+
+        <script src="{% static 'js/main.js' %} "></script>  
 
     </body>
 

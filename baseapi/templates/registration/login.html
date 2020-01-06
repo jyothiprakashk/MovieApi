@@ -1,6 +1,10 @@
 {% extends "html/index.html" %}
+{% load static %}
 {% block content %}
 {% include 'registration/signup-login-nav.html' %}
+<a class="no-internet-logo">
+    <img src="{% static 'images/error.png' %}" class="login-logo" alt="No Image Found">
+</a>
 <div class="login-page">
     <form class="login-form" action="log" method="POST">
         {% csrf_token %}
@@ -8,6 +12,7 @@
         <input type="password" name="password" placeholder="password">
         <button type="submit" class="login-button">Login</button>
         <p class="message">Already Registerd? <a href="{% url 'signup' %}">Registration</a></p>
+        {% include 'html/partial.html' %}
     </form>
 </div>
 {% endblock content %}

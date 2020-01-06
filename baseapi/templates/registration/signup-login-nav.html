@@ -22,3 +22,28 @@
         </ul>
     </div>
 </nav>
+
+
+<!-- bottom nav -->
+<nav>
+    <div class="signup-login-bottom">
+        <ul class="signup-botom">
+            <li
+                {% if 'signup' in request.path %}
+                    class="active"
+                {% else %}   
+                    class="nav-item mr-3"
+                {% endif %}
+                ><a class="" href="{% url 'signup' %}">
+                    <i class="fas fa-user-plus"></i> Register</a>
+            </li>
+            <li
+                {% if 'log' in request.path %}
+                    class="active"
+                {% else %}   
+                    class="nav-item mr-3"
+                {% endif %}
+                ><a class="" href="{% url 'log' %}"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+        </ul>
+    </div>
+</nav>

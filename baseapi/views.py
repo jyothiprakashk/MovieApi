@@ -24,9 +24,9 @@ def index(request):
             poster=request.POST["poster"]
             vote_average=request.POST["vote_average"]
             movie_id=request.POST["movie_id"]
-            task=Movie(title=title,release=release,poster=poster,vote_average=vote_average,movie_id=movie_id)
+            task=Movie(title=title,release=release,poster=poster,vote_average=vote_average,movie_id=movie_id,admin=request.user)
             task.save()
-            return redirect('/')
+            return redirect('/search')
         search_url="https://api.themoviedb.org/3/search/movie"
         params = {
                 'query' : request.POST['search'],

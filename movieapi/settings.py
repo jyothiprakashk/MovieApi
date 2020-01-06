@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'nif#^20cdx-0ydvii^rir2p2^zwhoh+_iy)443ekip7yup%3d@'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['cine-poster.herokuapp.com', 'localhost', '127.0.0.1']
 # STATICFILES_DIRS=[

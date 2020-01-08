@@ -38,13 +38,14 @@ def index(request):
         for result in s:
             movies={
                 'id':result['id'],
-                'title':result['title'][:15],
+                'title':result['original_title'][:15],
                 'overview':result['overview'][:100],
                 'release':result['release_date'],
                 'poster':result['poster_path'],
                 'vote_average' :result['vote_average'],
             }
             movie.append(movies)
+            #print(movie)
     context={
         'movie':movie
     } 
@@ -123,8 +124,16 @@ def cast(request, id):
         release=data['release_date']
         tagline=data['tagline'][:45]
         vote_average=data['vote_average']
-        video = data['videos']['results'][0]['key']
         generes=response.json()['genres']
+        if len(data['videos']['results']) !=0:
+            if "key" in data['videos']['results'][0]:
+                video = data['videos']['results'][0]['key']
+                print(video)
+        #video=data['videos']['results'][0]['key']
+        elif "poster_path" in data:
+            video=data['poster_path']
+            print(video)
+        
         for genere in generes:
             genere= {
                 'name':genere['name']
@@ -159,6 +168,7 @@ def cast(request, id):
             'movie_list':movie_list,
             'overview':overview,
             'video' :video,
+            # 'videos' :videos,
             'original_title' : original_title,
             'similar_list' : similar_list,
             'crew_list':crew_list,
@@ -260,6 +270,3 @@ def account(request):
     return render(request,'html/account.html')    
 
 
-
-# def handler404(request):
-#     return render(request, "html/no_internet.html")

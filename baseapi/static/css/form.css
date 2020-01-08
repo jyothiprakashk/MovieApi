@@ -85,6 +85,8 @@ h5 {
     flex-flow: wrap;
     width: 100%;
     padding-left: 40px;
+    justify-content: space-evenly;
+
 }
 .image-name {
     display: flex;
@@ -301,6 +303,8 @@ h4 {
     background-color: white;
     color: black;
     border-radius: 5px;
+    padding: 3px;
+    height: 32px
 
 }
 .cast-calender {
@@ -698,7 +702,7 @@ h3 {
     width: 100%;
     background-color: white;
     overflow: hidden;
-    height: 70px;
+    height: 30px;
     position: fixed;
     bottom: 0;
     z-index: 100;
@@ -730,10 +734,6 @@ h3 {
     background-color: darkblue;
     color: white;
     bottom: 0;
-    margin-bottom: -50px;
-    margin-bottom: 50px;
-    /* margin-top: 30px;
-    margin-top: -30px; */
 }
 .footer-paragrah {
     margin-left: 20px;
@@ -744,6 +744,15 @@ h3 {
 .footer a {
     color: white;
 }
+.video-img {
+    display: flex;
+}
+.video-imgs {
+    height: 400px;
+    width: 100%;
+    object-fit: contain;
+}
+
 
 @media (max-width: 900px) {
     .nav-first {

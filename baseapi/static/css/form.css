@@ -727,13 +727,24 @@ h3 {
 
 }
 .footer {
-    display: flex;
+    /* display: flex;
     flex-direction: row;
     height: 20px;
     justify-content: center;
     background-color: darkblue;
     color: white;
+    bottom: 0; */
+    background-color: darkblue;
+    color: white;
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    position: fixed;
     bottom: 0;
+    z-index: 100;
+    width: 100%;
+    height: 20px;
 }
 .footer-paragrah {
     margin-left: 20px;
@@ -752,6 +763,77 @@ h3 {
     width: 100%;
     object-fit: contain;
 }
+.forget-password {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 100px;
+}
+/* forget password form */
+.forget-password-form {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+/*
+.forget-password-header {
+    display: flex;
+    justify-content: center;
+}
+.forget-password-submit {
+
+} */
+.forget-password-submit {
+    font-size: 10px;
+    height: 26px;
+    background-color: blue;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+    color: white;
+    border: none;
+    padding-left: 10px;
+}
+.password-done-msg1 {
+    color: white;
+    text-align: center;
+    margin-top: 150px;
+    font-size: 20px;
+}
+.password-done-msg2 {
+    color: white;
+    text-align: center;
+    /* margin-top: 100px; */
+    font-size: 20px;
+}
+/* .change-password */
+.fa-key {
+    margin-right: 10px;
+}
+.change-password-1 {
+    float: right;
+    color: white;
+    margin-top: 10px;
+    font-size: 20px;
+}
+.change-password-1 :hover {
+    color: blue;
+    text-decoration: underline;
+}
+.change-password {
+    color: white;
+}
+/* password-reset */
+.password-reset {
+    color: white;
+    display: flex;
+    flex-direction: row-reverse;
+}
+.password-reset-1 :hover {
+    color: yellow;
+    text-decoration: underline;
+}
+
+
 
 
 @media (max-width: 900px) {

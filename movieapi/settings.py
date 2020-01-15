@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 import django_heroku
 import os
+import socket
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -25,11 +26,19 @@ SECRET_KEY = 'nif#^20cdx-0ydvii^rir2p2^zwhoh+_iy)443ekip7yup%3d@'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['cine-poster.herokuapp.com', 'localhost', '127.0.0.1']
-# STATICFILES_DIRS=[
-#     os.path.join(BASE_DIR,'static')
-# ]
-# STATIC_ROOT=os.path.join(BASE_DIR,'assests')
+ALLOWED_HOSTS = ['localhost']
+
+
+# if socket.gethostname() == "server_name":
+#     DEBUG = True
+#     ALLOWED_HOSTS = ["localhost,cine-poster.herokuapp.com",]
+
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'baseapi/static'),
+)
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'baseapi/static')
 
 # Application definition
 
@@ -42,9 +51,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'baseapi',
     'django.contrib.humanize',
+    'password_reset',
 ]
 LOGIN_URL = 'log'
 LOGIN_REDIRECT_URL = 'signup'
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -131,3 +142,18 @@ STATIC_URL = '/static/'
 django_heroku.settings(locals())
 # MOVIE_DATA_API_KEY='e21a9a47'
 MOVIE_DATA_API_KEY='e6f1e03ae70bc830f87e22213e3038a3'
+
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# EMAIL_HOST = 'smtp.sendgrid.net'
+# EMAIL_PORT = 587
+# EMAIL_HOST_USER = 'testsite_app'
+# EMAIL_HOST_PASSWORD = 'mys3cr3tp4ssw0rd'
+# EMAIL_USE_TLS = True
+# DEFAULT_FROM_EMAIL = 'TestSite Team <noreply@example.com>'
+
+#Email generating email for user activation and password 
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'jyothi.prakash@intainft.com'
+EMAIL_HOST_PASSWORD = 'jyothi@12'
+EMAIL_PORT = 587

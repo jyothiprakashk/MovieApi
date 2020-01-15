@@ -213,7 +213,7 @@ def log(request):
         return redirect('log')   
 
   else:      
-    return render(request, 'registration/login.html')
+    return render(request, 'account/login.html')
 def signup(request):
   if request.method=='POST':
    #Get form values
@@ -241,28 +241,15 @@ def signup(request):
     messages.error(request,'passwords do not match')
     return redirect('signup')   
   else:      
-    return render(request,'registration/signup.html')
+    return render(request,'account/signup.html')
 
-# def signup(request):
-#     if request.method=="POST":
-#         first_name=request.POST['first_name']
-#         last_name=request.POST['last_name']
-#         username=request.POST['username']
-#         password=request.POST['password1']
-#         password2=request.POST['password2']
-#         email=request.POST['email']
-#         user=User.objects.create_user(username=username,password=password,last_name=last_name,email=email,first_name=first_name)
-#         user.save()
-#         print('user created')
-#         return redirect("/log")
-#     else:
-#         return render(request,'registration/signup.html')
+
 @login_required(redirect_field_name="log")   
 def logouts(request):
     if request.method=='POST':
       auth.logout(request)
       messages.success(request,'you are logged out')
-    return redirect('/log')
+    return redirect('log')
                 
 @login_required(redirect_field_name="log")
 def account(request):

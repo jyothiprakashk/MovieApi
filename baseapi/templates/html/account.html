@@ -2,6 +2,7 @@
 {% block content %}
 {% include 'html/navbar.html' %}
 <div class="signup-botom-header">movieposter</div>
+<div class="change-password-1"><a href="{% url 'password_change' %}" class="change-password"><i class="fas fa-key"></i>Change Password</a></div>
 
 <div class="contact">
     <div class="username">Hello,{{ user.first_name }}</div>
@@ -40,7 +41,7 @@
         <p>Coded By Jyothi Prakash | </p>
         <a href="https://github.com/jyothiprakashk/MovieApi">Source Code</a>
     </div>
-</div>
+
 
 
 

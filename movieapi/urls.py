@@ -17,9 +17,11 @@ from django.contrib import admin
 from django.urls import path,include
 from django.conf import settings
 from django.conf.urls import handler404
+from django.conf.urls import url
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',include('baseapi.urls'))
+    path('',include('baseapi.urls')),
+    path('', include('django.contrib.auth.urls')),
 ]
 handler404 = 'baseapi.views.error_404_view'

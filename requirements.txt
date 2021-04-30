@@ -73,6 +73,6 @@ termcolor==1.1.0
 
 Theano==1.0.4
 uritemplate==3.0.1
-urllib3==1.25.7
+urllib3==1.25.8
 virtualenv==16.7.5
 whitenoise==5.0.1

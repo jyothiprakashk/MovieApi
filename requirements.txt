@@ -50,7 +50,7 @@ psycopg2==2.8.4
 pyasn1==0.4.7
 pyasn1-modules==0.2.7
 pycryptodome==3.9.4
-PyJWT==1.7.1
+PyJWT==2.4.0
 pyparsing==2.4.6
 pytesseract==0.3.0
 python-dateutil==1.5
